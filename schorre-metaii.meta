@@ -1,0 +1,27 @@
+.syntax program
+
+out1 = '*1' .out('gn1')
+  / '*2' .out('gn2')
+  / '*' .out('ci')
+  / .string .out('cl' *) .,
+
+output = ('.out' '(' $ out1 ')' / '.label' .out('lb') out1) .out('out') .,
+
+ex3 = .id .out('cll' *)
+  / .string .out('tst' *)
+  / '.id' .out('id')
+  / '.number' .out('num')
+  / '.string' .out('sr')
+  / '(' ex1 ')'
+  / '.empty' .out('set')
+  / '$' .label *1 ex3 .out('bt' *1) .out('set') .,
+
+ex2 = (ex3 .out('bf' *1) / output) $ (ex3 .out('be') / output) .label *1 .,
+
+ex1 = ex2 $ ('/' .out('bt' *1) ex2) .label *1 .,
+
+st = .id .label * '=' ex1 '.,' .out('r') .,
+
+program = '.syntax' .id .out('adr' *) $ st '.end' .out('end') .,
+
+.end

@@ -1,0 +1,211 @@
+        adr program
+out1
+        tst '*1'
+        bf  a000
+        cl  'gn1'
+        out
+a000
+        bt  a001
+        tst '*2'
+        bf  a002
+        cl  'gn2'
+        out
+a002
+        bt  a001
+        tst '*'
+        bf  a003
+        cl  'ci'
+        out
+a003
+        bt  a001
+        sr
+        bf  a004
+        cl  'cl'
+        ci
+        out
+a004
+a001
+        r
+output
+        tst '.out'
+        bf  a005
+        tst '('
+        be
+a006
+        cll out1
+        bt  a006
+        set
+        be
+        tst ')'
+        be
+a005
+        bt  a007
+        tst '.label'
+        bf  a008
+        cl  'lb'
+        out
+        cll out1
+        be
+a008
+a007
+        bf  a009
+        cl  'out'
+        out
+a009
+a010
+        r
+ex3
+        id
+        bf  a011
+        cl  'cll'
+        ci
+        out
+a011
+        bt  a012
+        sr
+        bf  a013
+        cl  'tst'
+        ci
+        out
+a013
+        bt  a012
+        tst '.id'
+        bf  a014
+        cl  'id'
+        out
+a014
+        bt  a012
+        tst '.number'
+        bf  a015
+        cl  'num'
+        out
+a015
+        bt  a012
+        tst '.string'
+        bf  a016
+        cl  'sr'
+        out
+a016
+        bt a012
+        tst '('
+        bf  a017
+        cll ex1
+        be
+        tst ')'
+        be
+a017
+        bt a012
+        tst '.empty'
+        bf  a018
+        cl  'set'
+        out
+a018
+        bt a012
+        tst '$'
+        bf  a019
+        lb
+        gn1
+        out
+        cll ex3
+        be
+        cl  'bt'
+        gn1
+        out
+        cl  'set'
+        out
+a019
+a012
+        r
+ex2
+        cll ex3
+        bf  a020
+        cl  'bf'
+        gn1
+        out
+a020
+        bt  a021
+        cll output
+        bf  a022
+a022
+a021
+        bf  a023
+a024
+        cll ex3
+        bf  a025
+        cl  'be'
+        out
+a025
+        bt a026
+        cll output
+        bf  a027
+a027
+a026
+        bt  a024
+        set
+        be
+        lb
+        gn1
+        out
+a023
+a028
+        r
+ex1
+        cll ex2
+        bf  a029
+a030
+        tst '/'
+        bf  a031
+        cl  'bt'
+        gn1
+        out
+        cll ex2
+        be
+a031
+a032
+        bt  a030
+        set
+        be
+        lb
+        gn1
+        out
+a029
+a033
+        r
+st
+        id
+        bf  a034
+        lb
+        ci
+        out
+        tst '='
+        be
+        cll ex1
+        be
+        tst '.,'
+        be
+        cl  'r'
+        out
+a034
+a035
+        r
+program
+        tst '.syntax'
+        bf  a036
+        id
+        be
+        cl  'adr'
+        ci
+        out
+a037
+        cll st
+        bt  a037
+        set
+        be
+        tst '.end'
+        be
+        cl  'end'
+        out
+a036
+a038
+        r
+        end

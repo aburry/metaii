@@ -1,0 +1,27 @@
+.declare out1 output ex3 ex2 ex1 st preamble program
+.syntax program
+
+out1 = "*1" .out("  gn1")
+  / "*" .out("  ci")
+  / .string .out("  cl(" * ")") ;
+
+output = ".out" "(" $ out1 ")" .out("  out") ;
+
+ex3 = .id .out("  cll(" * ")")
+  / .string .out("  tst(" * ")")
+  / ".id" .out("  id")
+  / ".string" .out("  sr")
+  / "(" ex1 ")"
+  / "$" .out(*1 ":") ex3 .out("  bt(" *1 ")") .out("  set") ;
+
+ex2 = (ex3 .out("  bf(" *1 ")") / output) $ (ex3 .out("  be") / output) .out(*1 ":") ;
+
+ex1 = ex2 $ ("/" .out("  bt(" *1 ")") ex2) .out(*1 ":") ;
+
+st = .id .out("sub(" * ")") .out("  lgn") "=" ex1 ";" .out("  ret") ;
+
+preamble = ".declare" $ (.id .out("def(" * ")")) ".syntax" .id .out("adr(" * ")") ;
+
+program = .out("#include <meta.h>") preamble $ st ".end" ;
+
+.end
