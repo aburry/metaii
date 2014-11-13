@@ -4,18 +4,21 @@ metaii
 Exploration of Val Schorre's META II.
 
 ## Files
+```
 schorre-metaii.meta  META II definition from the paper (except in lowercase).
 schorre-metaii.vm    Hand-compiled version to the VM defined in the paper.
 metaii.meta          A version on META II that compiles to C++. Only defines enough to self-compile.
 metaii.h             META II run-time.
 metaii.cpp           Machine compiled version of metaii.meta.
+```
 
 ## Build
 Tested with GCC 4.8.3:
-
+```
   g++ -I. -O3 --whole-program metaii.cpp -o metaii
   ./metaii < metaii.meta > metaii.cpp
-  
+```
+
 ## Process
 
 I hand-compiled Schorre's META II from the paper. Using some C pre-processor macros and some vim tricks I
